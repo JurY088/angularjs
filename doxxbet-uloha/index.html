@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="offer">
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>DOXXbet - Offer</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script src="offer.js"></script>
+		<style>
+			table {
+			width:100%;
+			text-align: center;
+			}
+			table#t01 tr:nth-child(even) {
+			background-color: #E3ECF5;
+			}
+			table#t01 tr:nth-child(odd) {
+			background-color:#FFF;
+			}
+			table#t01 th	{
+			background-color: #D1DEEC;
+			color: black;
+			}
+		</style>
+	</head>
+
+	<body ng-app="offer" ng-controller="OfferController">
+		<table ng-repeat="x in offerData"  id="t01" >
+			<thead>
+				<tr>
+					<th>ID:</th>
+					<th>regionName:</th>
+					<th>regionSysName:</th>
+					<th>leagueCupId:</th>
+					<th>leagueCupName:</th>
+					<th>leagueCupSysName:</th>
+					<th>count</th>
+					<th>chances:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> {{x.regionId}}</td>
+					<td>  {{x.regionName}}</td>
+					<td> {{x.regionSysName}}</td>
+					<td> {{x.leagueCupId}}</td>
+					<td> {{x.leagueCupName}}</td>
+					<td> {{x.leagueCupSysName}}</td>
+					<td> {{x.count}}</td>
+					<td>
+						<table ng-repeat="z in x.chances" >
+							<th> id:</th>
+							<th> firstOdd:</th>
+							<tr>
+								<td>{{z.id}}</td>
+								<td>
+									<table>
+										<tr>
+											<th>Date:</th>
+											<th>Time:</th>
+											<th>SportID:</th>
+											<th>ID:</th>
+											<th>Name:</th>
+											<th>Rate:</th>
+											<th>EventID:</th>
+										</tr>
+										<tr ng-repeat="c in z.firstOdd" >
+											<td>{{c.date }}</td>
+											<td>{{c.time}}</td>
+											<td>{{c.sportId}}</td>
+											<td>{{c.id}}</td>
+											<td>{{c.name}}</td>
+											<td>{{c.rate}}</td>
+											<td>{{c.eventId}}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr> 
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
